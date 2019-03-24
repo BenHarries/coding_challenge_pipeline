@@ -3,17 +3,28 @@ import imageio
 
 
 def add_noise(images, i, noise_param):
+    """
+    Takes a list of transformed images and adds noise to them
+    :param images: The list of transformed images
+    :param i: The index of the image
+    :param noise_param: How noisey the image should be
+    :return: List of noisey images
+    """
+
+    noisey_images = []
     for j, image in enumerate(images):
         noise = noise_param * np.random.normal(size=image.shape)
         print(noise)
         noise = noise.astype(int)
 
-        noisy_image = image + noise
-        noisy_image = np.clip(noisy_image, 0, 255)
-        noisy_image = noisy_image.astype(np.uint8)
+        noisey_image = image + noise
+        noisey_image = np.clip(noisey_image, 0, 255)
+        noisey_image = noisey_image.astype(np.uint8)
+        print(noisey_image.shape)
+        imageio.imwrite('/Users/ben/code/ML/CCGpipeline/output/' + str(i) + '-' + str(j) + '.png', noisey_image)
+        noisey_images.append(noisey_image)
 
-        imageio.imwrite('/Users/ben/code/ML/CCGpipeline/output/' + str(i) + '-' + str(j) + '.png', noisy_image)
-    return noisy_image
+    return noisey_images
 
 
 def add_noise_mp(inq, noise_param):

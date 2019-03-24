@@ -1,23 +1,28 @@
 import unittest
+import numpy as np
+from random_transform import transform
+from add_noise import add_noise
 
 
-# four classes for each file
+class TestPipelin(unittest.TestCase):
 
-class TestStringMethods(unittest.TestCase):
+    def test_number_transform_image(self):
+        image = np.random.randint(0, 255, size=(100, 100), dtype=np.uint8)
+        for number_transforms in range(10):
+            transformed_images = transform(image, 1, number_transforms)
 
-    def test_upper(self):
-        self.assertEqual('foo'.upper(), 'FOO')
+            self.assertEqual(len(transformed_images), number_transforms)
 
-    def test_isupper(self):
-        self.assertTrue('FOO'.isupper())
-        self.assertFalse('Foo'.isupper())
+    def test_add_noise(self):
+        image = np.random.randint(0, 255, size=(5, 100, 100), dtype=np.uint8)
 
-    def test_split(self):
-        s = 'hello world'
-        self.assertEqual(s.split(), ['hello', 'world'])
-        # check that s.split fails when the separator is not a string
-        with self.assertRaises(TypeError):
-            s.split(2)
+        print(image.shape)
+        noisey_image = add_noise(image, 1, 40)
+
+        image_sum = np.sum(image[0].reshape(100 * 100))
+        noisey_image_sum = np.sum(noisey_image[0].reshape(100 * 100))
+
+        self.assertNotEqual(image_sum, noisey_image_sum)
 
 
 if __name__ == '__main__':
