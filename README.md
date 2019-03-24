@@ -1,6 +1,8 @@
 
-How to use code
+# How to use code
+pip install imageio
+# Design decisions made
+I returned 
 
-Design decisions made
 
 Remaining todo's
