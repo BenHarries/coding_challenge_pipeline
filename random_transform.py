@@ -9,9 +9,7 @@
 
 # The transformed images must be saved in a directory.
 # adapted from https://stackoverflow.com/questions/44401085/how-to-scale-the-image-along-x-and-y-axis-and-crop-to-a-specific-height-and-widt
-import imutils
 import imageio
-import cv2
 import numpy as np
 from scipy import ndimage
 
