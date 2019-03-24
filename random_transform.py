@@ -35,6 +35,6 @@ def transform(image, filename, N=3):
         all_transformed.append(translated_image)
 
 
-        imageio.imwrite('/Users/ben/code/ML/CCGpipeline/only_transformed/transform' + str(filename) + '-' + str(j) + '.png', translated_image)
+        imageio.imwrite('/Users/ben/code/ML/CCGpipeline/only_transformed/' + str(filename) + '-' + str(j) + '.png', translated_image)
 
     return all_transformed
