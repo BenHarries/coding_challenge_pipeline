@@ -19,7 +19,7 @@ def read_raw(path='train-images-idx3-ubyte.gz'):
     # Get metadata for images
     images.read(4)  # skip the magic_number
     number_of_images = images.read(4)
-    number_of_images = 5 # unpack('>I', number_of_images)[0]
+    number_of_images = 100 # unpack('>I', number_of_images)[0]
     rows = images.read(4)
     rows = unpack('>I', rows)[0]
     cols = images.read(4)

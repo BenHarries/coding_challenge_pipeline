@@ -16,10 +16,9 @@ import numpy as np
 from scipy import ndimage
 
 
-def transform(image, filename, N=3):
+def transform(image, filename, N):
     all_transformed = []
     for j in range(N):
-
         #rotate
         angle = np.random.uniform(-100,100)
         rotated = ndimage.rotate(image, angle)
@@ -30,10 +29,7 @@ def transform(image, filename, N=3):
         scaled_w = w * np.random.uniform(-.4,.4)
         translated_image = ndimage.interpolation.shift(rotated, (scaled_h, scaled_w) )
 
-
-
         all_transformed.append(translated_image)
-
 
         imageio.imwrite('/Users/ben/code/ML/CCGpipeline/only_transformed/' + str(filename) + '-' + str(j) + '.png', translated_image)
 
