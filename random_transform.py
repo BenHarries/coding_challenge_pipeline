@@ -15,6 +15,9 @@ from scipy import ndimage
 
 
 def transform(image, filename, N):
+    """
+    Takes an image as a numpy array and applies rotation and translation
+    """
     all_transformed = []
     for j in range(N):
         # rotate
