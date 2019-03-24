@@ -37,12 +37,8 @@ def read_raw(path='train-images-idx3-ubyte.gz'):
                 tmp_pixel = images.read(1)  # Just a single byte
                 tmp_pixel = unpack('>B', tmp_pixel)[0]
                 x[i][row][col] = tmp_pixel
-    for i in range(1):
-        print(x[i])
-        imageio.imwrite('/Users/ben/code/ML/CCGpipeline/image' + str(i) +'.png',x[i])
-    return x[0]
-
-
-
-transform(read_raw())
+    # for i in range(1):
+    #     print(x[i])
+    #     imageio.imwrite('/Users/ben/code/ML/CCGpipeline/image' + str(i) +'.png',x[i])
+    return x
 
