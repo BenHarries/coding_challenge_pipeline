@@ -21,7 +21,7 @@ def add_noise(images, i, noise_param):
         noisey_image = np.clip(noisey_image, 0, 255)
         noisey_image = noisey_image.astype(np.uint8)
         print(noisey_image.shape)
-        imageio.imwrite('/Users/ben/code/ML/CCGpipeline/output/' + str(i) + '-' + str(j) + '.png', noisey_image)
+        imageio.imwrite('./output/' + str(i) + '-' + str(j) + '.png', noisey_image)
         noisey_images.append(noisey_image)
 
     return noisey_images
