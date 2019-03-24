@@ -34,3 +34,14 @@ def transform(image, filename, N):
         imageio.imwrite('/Users/ben/code/ML/CCGpipeline/only_transformed/' + str(filename) + '-' + str(j) + '.png', translated_image)
 
     return all_transformed
+
+def transform_mp(inq, outq, number_transforms):
+    while True:
+        val=inq.get()
+        print("got image to transform")
+        if val is None:
+            outq.put(None)
+            break
+
+        transformed_images = transform(val[0], val[1], number_transforms)
+        outq.put((transformed_images, val[1]))
