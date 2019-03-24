@@ -17,14 +17,24 @@ from scipy import ndimage
 
 
 def transform(image, filename, N=3):
-    all_rotated = []
+    all_transformed = []
     for j in range(N):
 
+        #rotate
         angle = np.random.uniform(-100,100)
-        print(image.shape)
-        # rotation angle in degree
         rotated = ndimage.rotate(image, angle)
-        all_rotated.append(rotated)
-        imageio.imwrite('/Users/ben/code/ML/CCGpipeline/transform' + str(filename) + str(j) + '.png', rotated)
 
-    return all_rotated
+        # translate
+        h, w = rotated.shape
+        scaled_h = h * np.random.uniform(-.4,.4)
+        scaled_w = w * np.random.uniform(-.4,.4)
+        translated_image = ndimage.interpolation.shift(rotated, (scaled_h, scaled_w) )
+
+
+
+        all_transformed.append(translated_image)
+
+
+        imageio.imwrite('/Users/ben/code/ML/CCGpipeline/only_transformed/transform' + str(filename) + '-' + str(j) + '.png', translated_image)
+
+    return all_transformed

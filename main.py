@@ -5,6 +5,6 @@ from random_transform import transform
 images = read_raw('/Users/ben/code/ML/CCGpipeline/train-images-idx3-ubyte.gz')
 
 for i in range(len(images)):
-    transform(images[i], i, 3)
+    transform(images[i], i, 4)
 
 
